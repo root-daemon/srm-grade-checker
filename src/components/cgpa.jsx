@@ -33,7 +33,6 @@ export default function CGPA() {
     function cgpaCalculator() {
         var points = 0;
         var sum_credit = 0;
-        console.log(courses)
         courses.forEach((course) => {
             if (course.cred === "") course.cred = 0;
             sum_credit += Number(course.cred) || 0;
@@ -41,10 +40,8 @@ export default function CGPA() {
             points += Number(course.cred) * gp
         });
         var gpa = (points / sum_credit);
-        var percent = (gpa * 10).toFixed(0);
 
-        console.log(points, sum_credit)
-        setCgpa(gpa)
+        setCgpa(isNaN(gpa) ? 0 : gpa)
     }
 
     return (
