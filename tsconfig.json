@@ -1,3 +1,15 @@
 {
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "esnext",
+    "lib": ["es6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "strict": true,
+    "exclude": [
+      "node_modules"
+    ]
+  },
   "extends": "astro/tsconfigs/strict"
 }

@@ -1,0 +1,94 @@
+---
+interface Props {
+  cno: number;
+  cred: number;
+  grade: 'O' | 'A+' | 'A' | 'B+' | 'B' | 'C' | 'W' | 'Abs/Det';
+ }
+
+const { cno, cred, grade } = Astro.props; // Attributes
+---
+
+<div id="content">
+  <div id="sno">
+    <label>{cno}.</label>
+    <input type="number" ; value={cred || 0} min="{1}" />
+  </div>
+  <select onchange={(ev) =>  grade = event.target.value } id="grade">
+    <option>
+      <option selected>O</option>
+      <option>A+</option>
+      <option>A</option>
+      <option>B+</option>
+      <option>B</option>
+      <option>C</option>
+      <option>W</option>
+      <option>Abs/Det</option>
+    </option>
+  </select>
+  <script>
+  //   document.getElementsById('grade').forEach(e => {
+  //   e.addEventListener("change", (event) => {
+  //     event.target.value
+  //   });
+  // });
+
+  </script>
+  <style>
+    #content {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      gap: 12px;
+      margin: 1vh;
+    }
+
+    #sno {
+      background-color: var(--input);
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      gap: 32px;
+      border-radius: 10px;
+      padding: 4px 8px;
+    }
+
+    #sno label {
+      color: var(--sno);
+      font-size: 16px;
+    }
+
+    input {
+      background: transparent;
+      color: var(--text-color);
+      font-size: 18px;
+      outline: none;
+    }
+
+    input[type='number']::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border: 0px none;
+    }
+
+    select {
+      background-color: var(--input);
+      border-radius: 10px;
+      padding: 4px 14px;
+      color: var(--text-color);
+      text-align: center;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-indent: 1px;
+      -o-text-overflow: '';
+      text-overflow: '';
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+  </style>
+</div>
