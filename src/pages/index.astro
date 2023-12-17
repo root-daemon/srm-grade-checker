@@ -144,7 +144,7 @@ import CGPA from "../components/cgpa";
   }
 
   .mobile {
-    display: flex;
+    display: none;
     position: fixed;
     bottom: 18px;
     padding: 4px;
@@ -179,12 +179,18 @@ import CGPA from "../components/cgpa";
 
   /* Mobile */
   @media only screen and (max-width: 500px) {
+    .mobile {
+      display: flex !important;
+    }
     .col-6 {
       padding: 0px;
     }
   }
 
   @media only screen and (max-width: 360px) {
+    .mobile {
+      display: flex !important;
+    }
     .row {
       margin: 0px;
     }
