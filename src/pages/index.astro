@@ -69,7 +69,17 @@ import CGPA from "../components/cgpa";
     color: var(--brand);
     font-weight: 600;
     text-align: left;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: resize;
   }
+
+  .title:hover {
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: var(--brand);
+    color: transparent;
+    font-size: 34px;
+  }
+
   .card {
     height: 80vh;
     background-color: var(--card);
