@@ -1,6 +1,6 @@
 import "./CourseSelect.css";
 
-export default function CourseSelect({ cno, courses, setCourse, cgpaCalculator }) {
+export default function CourseSelect({ cno, courses, setCourse }) {
   return (
     <div id="content">
       <div id="sno">
