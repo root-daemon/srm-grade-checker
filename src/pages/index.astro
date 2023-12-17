@@ -1,25 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import CourseSelect from '../components/CourseSelect.astro';
+import Layout from "../layouts/Layout.astro";
 
-type grade = 'O' | 'A+' | 'A' | 'B+' | 'B' | 'C' | 'W' | 'Abs/Det'
-const grade_points = {
-    "O":10,
-    "A+":9,
-    "A":8,
-    "B+":7,
-    "B":6,
-    "C":5.5,
-    "W":0,
-    "F":0,
-    "Ab":0,
-    "I":0,
-    "*":0
-};
-
-const courses = [{ cred: 0, grade: 'O'},{ cred: 0, grade: 'O'}, { cred: 0, grade: 'O'}];
-const cgp = 0;
-
+import CGPA from "../components/cgpa";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -31,50 +13,37 @@ const cgp = 0;
       <div class="row">
         <div class="col-6">
           <div class="card">
-            CGPA Calculator
-            <div class="sub-card">
-              <div class="cgpa"><h1>6.9</h1><p>CGPA</p></div>
-              {
-                courses.map((el, index) => 
-                  (<CourseSelect
-                    cred={el.cred}
-                    cno={index + 1}
-                    grade={el.grade as grade}
-							
-                  />)
-                )
-              }
-            </div>
+            <h2>CGPA Calculator</h2>
+            <CGPA client:load />
           </div>
         </div>
-        <div class="col-6"><div class="card">hello</div></div>
+        <div class="col-6">
+          <div class="card">
+            <h2>Grade Calculator</h2>
+            <div class="sub-card"></div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
-  <script type="text/javascript">
-
-    function cgpCalculator(event) { 
-	  var points = 0;
-	  var sum_credit=0;
-	courses.forEach((course) => {
-		sum_credit += course.cred || 0;
-		points+= grade_points[course.grade];
-  });
-  } 
-
-  </script>
 </Layout>
 
 <style>
   #head {
-    padding: 28px 22px;
+    padding: 28px 36px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
     width: 100vw;
+  }
+  .container {
+    max-width: none;
+  }
+  .row {
+    margin: 12px;
   }
   .title {
     font-size: 36px;
@@ -83,16 +52,16 @@ const cgp = 0;
     text-align: left;
   }
   .card {
-    height: 60vh;
+    height: 80vh;
     background-color: var(--card);
     color: var(--text-color);
-    border-radius: 44px;
-    border-color: var(--border);
-    padding: 2vh;
+    border-radius: 38px;
+    border: 1px solid var(--border);
+    padding: 1vh;
   }
-  .container {
-    position: relative;
-    padding-top: 20vh;
+  .card h2 {
+    margin: 8px 16px;
+    color: #f5f5f5;
   }
   main {
     background: var(--bg);
@@ -105,33 +74,33 @@ const cgp = 0;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 
   .sub-card {
     background-color: var(--incard);
-    height: 80%;
-    border-radius: 44px;
+    height: 100%;
+    border-radius: 32px;
     border-color: var(--border);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    border: 1px solid var(--border);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin-top: 2vh;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     padding: 10px;
   }
 
@@ -140,25 +109,18 @@ const cgp = 0;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: baseline;
-        -ms-flex-align: baseline;
-            align-items: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
     gap: 6px;
   }
-  .cgpa h1 {
-    font-size: 40px;
-    color: var(--brand) !important;
-  }
-  .cpga p {
+  .text {
     color: #3e3f3e !important;
     font-weight: 600;
     font-size: 14px;
   }
 
-function cgpCalculator(): Function {
-throw new Error('Function not implemented.');
-}
-
-function cgpCalculator(): Function {
-throw new Error('Function not implemented.');
-}
+  .cgpa h1 {
+    font-size: 40px;
+    color: var(--brand) !important;
+  }
 </style>
