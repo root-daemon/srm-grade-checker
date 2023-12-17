@@ -1,5 +1,5 @@
-import CourseSelect from "../components/subcomponents/CourseSelect.jsx";
 import { useEffect, useState } from "react";
+import CourseSelect from "./subcomponents/CourseSelect/CourseSelect.jsx";
 
 const grade_points = {
     O: 10,
@@ -18,7 +18,6 @@ const grade_points = {
 export default function CGPA() {
     const [cgpa, setCgpa] = useState(0)
     const [courses, setCourse] = useState([
-        { cred: 0, grade: "O" },
         { cred: 0, grade: "O" },
         { cred: 0, grade: "O" },
         { cred: 0, grade: "O" },

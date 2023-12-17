@@ -1,6 +1,11 @@
-import "./CourseSelect.css";
+import './CourseSelect.css';
 
-export default function CourseSelect({ cno, courses, setCourse, cgpaCalculator }) {
+export default function CourseSelect({
+  cno,
+  courses,
+  setCourse,
+  cgpaCalculator,
+}) {
   return (
     <div id="content">
       <div id="sno">
@@ -10,7 +15,7 @@ export default function CourseSelect({ cno, courses, setCourse, cgpaCalculator }
           max={9}
           maxLength="2"
           placeholder="0"
-          value={courses[cno - 1].cred != 0 ? courses[cno - 1].cred : ""}
+          value={courses[cno - 1].cred != 0 ? courses[cno - 1].cred : ''}
           onInput={(event) => {
             if (event.target.value > 10)
               event.target.value = event.target.value.slice(0, 1);
@@ -21,8 +26,7 @@ export default function CourseSelect({ cno, courses, setCourse, cgpaCalculator }
               cred: Number(ev.target.value),
               grade: a[cno - 1].grade,
             };
-            setCourse(a)
-
+            setCourse(a);
           }}
         />
       </div>
@@ -30,7 +34,7 @@ export default function CourseSelect({ cno, courses, setCourse, cgpaCalculator }
         onChange={(ev) => {
           let a = [...courses];
           a[cno - 1] = { cred: a[cno - 1].cred, grade: ev.target.value };
-          setCourse(a)
+          setCourse(a);
         }}
         id="grade"
         value={courses[cno - 1].grade}
