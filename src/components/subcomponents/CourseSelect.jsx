@@ -21,8 +21,8 @@ export default function CourseSelect({ cno, courses, setCourse, cgpaCalculator }
               cred: Number(ev.target.value),
               grade: a[cno - 1].grade,
             };
-            setCourse(a);
-            cgpaCalculator()
+            setCourse(a)
+
           }}
         />
       </div>
@@ -30,8 +30,7 @@ export default function CourseSelect({ cno, courses, setCourse, cgpaCalculator }
         onChange={(ev) => {
           let a = [...courses];
           a[cno - 1] = { cred: a[cno - 1].cred, grade: ev.target.value };
-          setCourse(a);
-          cgpaCalculator()
+          setCourse(a)
         }}
         id="grade"
         value={courses[cno - 1].grade}

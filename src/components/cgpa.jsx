@@ -1,5 +1,5 @@
 import CourseSelect from "../components/subcomponents/CourseSelect.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const grade_points = {
     O: 10,
@@ -26,15 +26,26 @@ export default function CGPA() {
         { cred: 0, grade: "O" },
     ]);
 
+    useEffect(() => {
+        cgpaCalculator()
+    }, [courses])
+    
     function cgpaCalculator() {
         var points = 0;
         var sum_credit = 0;
         console.log(courses)
         courses.forEach((course) => {
-          sum_credit += course.cred || 0;
-          points += grade_points[course.grade];
+            if (course.cred === "") course.cred = 0;
+            sum_credit += Number(course.cred) || 0;
+            var gp = grade_points[course.grade];
+            points += Number(course.cred) * gp
         });
-      }
+        var gpa = (points / sum_credit);
+        var percent = (gpa * 10).toFixed(0);
+
+        console.log(points, sum_credit)
+        setCgpa(gpa)
+    }
 
     return (
         <div className="sub-card">
