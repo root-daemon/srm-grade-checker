@@ -39,7 +39,12 @@ const { title } = Astro.props;
     text-rendering: geometricPrecision !important;
     overflow-x: hidden;
     color: var(--text-color);
-	font-family: "Manrope";
+    font-family: 'Manrope';
+    background: var(--bg);
+    font-weight: 600;
+    scroll-behavior: smooth;
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 
   }
 </style>
