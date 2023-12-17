@@ -1,41 +1,58 @@
 import { useEffect, useState } from 'react';
 import GradeSelect from './subcomponents/GradeSelect.jsx/GradeSelect';
 const grade_points = {
-  O: 10,
-  'A+': 9,
-  A: 8,
-  'B+': 7,
-  B: 6,
-  C: 5.5,
-  W: 0,
-  F: 0,
-  Ab: 0,
-  I: 0,
-  '*': 0,
+  O: 91,
+  'A+': 81,
+  A: 71,
+  'B+': 61,
+  B: 56,
+  C: 50,
 };
 
 export default function GradeCalculator() {
-  const [courses, setCorures] = useState([
-    { grade: 'O', marks: 0, requireMarks: 0 },
-    { grade: 'O', marks: 0, requireMarks: 0 },
-    { grade: 'O', marks: 0, requireMarks: 0 },
-    { grade: 'O', marks: 0, requireMarks: 0 },
-    { grade: 'O', marks: 0, requireMarks: 0 },
+  const [courses, setCourse] = useState([
+    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
   ]);
 
   useEffect(() => {
-    
+    requiredMarksCalculator();
+    console.log(courses);
   }, [courses]);
 
+  function requiredMarksCalculator() {
+    console.log('calcualted');
+    courses.forEach((course) => {
+      var marks_required = grade_points[course.grade] - course.internalMarks;
+      console.log('marks_required', marks_required);
+      course.requiredMarks = (marks_required / 40) * 75;
+    });
+  }
   return (
     <div id="grade" className="sub-card">
       <div className="cpga">
         <p className="text">Grade</p>
       </div>
-      {courses.forEach((course) => {
-        if (courses.marks === '') course.cred = 0;
-        courses.map((_el, index) => <GradeSelect />);
-      })}
+      <table>
+        <tr>
+          <th>S.no</th>
+          <th>Internals</th>
+          <th>Grade</th>
+          <th>Required Marks</th>
+        </tr>
+        {courses.map((_el, index) => (
+          <GradeSelect
+            key={index}
+            index={index}
+            courses={courses}
+            setCourse={setCourse}
+            requiredMarksCalculator={requiredMarksCalculator}
+          />
+        ))}
+      </table>
     </div>
   );
 }

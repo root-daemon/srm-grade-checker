@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 
 import CGPA from "../components/cgpa";
+import GradeCalculator from "../components/grade"; 
 ---
 
 <Layout title="Welcome to Astro.">
@@ -21,8 +22,7 @@ import CGPA from "../components/cgpa";
         <div class="col-6">
           <div class="card">
             <h2>Grade Calculator</h2>
-            <div class="sub-card"></div>
-            <div id="grade"></div>
+            <GradeCalculator client:load>
           </div>
         </div>
       </div>

@@ -5,7 +5,9 @@
   gap: 12px;
   margin: 1vh;
 }
-
+table {
+  font-size: 16px;
+}
 #sno {
   background-color: var(--input);
   display: -webkit-box;
@@ -16,12 +18,21 @@
   padding: 4px 8px;
   align-items: center;
 }
-
+.internal-input {
+  background-color: var(--input);
+  border-radius: 10px;
+  padding: 0;
+}
 #sno label {
   color: var(--sno);
   font-size: 16px;
 }
 
+.required-marks {
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  color: var(--tip);
+}
 input {
   background: transparent;
   color: var(--text-color);
@@ -30,7 +41,7 @@ input {
   width: 74px;
 }
 
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
@@ -49,8 +60,8 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  -o-text-overflow: "";
-  text-overflow: "";
+  -o-text-overflow: '';
+  text-overflow: '';
 }
 
 select::-ms-expand {
