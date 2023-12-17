@@ -41,11 +41,11 @@ export default function CGPA() {
         });
         var gpa = (points / sum_credit);
 
-        setCgpa(isNaN(gpa) ? 0 : gpa)
+        setCgpa(isNaN(gpa) ? 0 : parseFloat(gpa.toPrecision(3)))
     }
 
     return (
-        <div className="sub-card">
+        <div id="cgpa" className="sub-card">
             <div className="cgpa">
                 <h1>{cgpa}</h1>
                 <p className="text">CGPA</p>
