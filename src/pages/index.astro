@@ -12,6 +12,7 @@ import CGPA from "../components/cgpa";
     <div class="container">
       <div class="row">
         <div class="col-6">
+          <div id="cgpa"></div>
           <div class="card">
             <h2>CGPA Calculator</h2>
             <CGPA client:load />
@@ -21,12 +22,30 @@ import CGPA from "../components/cgpa";
           <div class="card">
             <h2>Grade Calculator</h2>
             <div class="sub-card"></div>
+            <div id="grade"></div>
           </div>
         </div>
       </div>
     </div>
+    <div class="mobile">
+      <a href="#cgpa" id="cgpa-toggle" class="active">CGPA</a>
+      <a id="grade-toggle" href="#grade">Grade</a>
+    </div>
   </main>
 </Layout>
+<script>
+  const ct = document.getElementById("cgpa-toggle");
+  const gt = document.getElementById("grade-toggle");
+
+  ct.addEventListener("click", (e) => {
+    ct.classList.add("active");
+    gt.classList.remove("active");
+  });
+  gt.addEventListener("click", (e) => {
+    gt.classList.add("active");
+    ct.classList.remove("active");
+  });
+</script>
 
 <style>
   #head {
@@ -122,5 +141,52 @@ import CGPA from "../components/cgpa";
   .cgpa h1 {
     font-size: 40px;
     color: var(--brand) !important;
+  }
+
+  .mobile {
+    display: flex;
+    position: fixed;
+    bottom: 18px;
+    padding: 4px;
+    background: #0e100e;
+    border-radius: 14px;
+    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .mobile a {
+    padding: 6px 36px;
+    font-size: 16px;
+    border-radius: 10px;
+    color: #d8ffc6;
+  }
+
+  .mobile a.active {
+    background: var(--brand);
+    color: var(--bg);
+  }
+
+  /* Tablet */
+  @media only screen and (max-width: 810px) {
+    .row {
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+    .col-6 {
+      width: 100vw;
+    }
+  }
+
+  /* Mobile */
+  @media only screen and (max-width: 500px) {
+    .col-6 {
+      padding: 0px;
+    }
+  }
+
+  @media only screen and (max-width: 360px) {
+    .row {
+      margin: 0px;
+    }
   }
 </style>
