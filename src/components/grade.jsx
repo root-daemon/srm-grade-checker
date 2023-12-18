@@ -31,6 +31,7 @@ export default function GradeCalculator() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
+    console.clear()
   }, []);
 
   function calculateAvgGrade() {
@@ -115,7 +116,7 @@ export default function GradeCalculator() {
           onClick={handleOnClick}
           className="btn btn-success add-course-button"
         >
-          Add a Course
+          <i className="bi bi-plus"></i> Add a Course
         </div>
       </div>
     </div>

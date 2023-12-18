@@ -25,7 +25,7 @@ export default function GradeSelect({
           <div className="internal-input">
             <td>
               <div id="sno">
-                <label>{index + 1}.</label>
+                <label htmlFor='grade-input'>{index + 1}.</label>
               </div>
             </td>
 
@@ -34,6 +34,7 @@ export default function GradeSelect({
                 type="number"
                 max={60}
                 maxLength="3"
+                id="grade-input"
                 placeholder="0"
                 value={
                   courses[index].internalsMarks != 0

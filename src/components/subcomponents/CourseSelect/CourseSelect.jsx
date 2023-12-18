@@ -7,13 +7,14 @@ export default function CourseSelect({ cno, courses, setCourse }) {
         <div className="cred-input">
           <td>
             <div id="sno">
-              <label>{cno}.</label>
+              <label htmlFor='course-input'>{cno}.</label>
             </div>
           </td>
           <td>
             <input
               type="number"
               max={9}
+              id="course-input"
               maxLength="2"
               placeholder="0"
               value={courses[cno - 1].cred != 0 ? courses[cno - 1].cred : ''}
