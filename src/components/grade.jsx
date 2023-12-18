@@ -25,7 +25,7 @@ export default function GradeCalculator() {
         <p className="text">Grade</p>
       </div>
       <table className='grade-calc'>
-        <tr>
+        <tr style={{display: 'flex', gap: 18}}>
           <th>S.no</th>
           <th>Internals</th>
           <th>Grade</th>

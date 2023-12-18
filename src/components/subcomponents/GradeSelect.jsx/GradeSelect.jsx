@@ -16,6 +16,7 @@ export default function GradeSelect({
   };
   const [requiredMarks, setMarks] = useState(0);
 
+
   return (
     <tr>
       <div className="content">
@@ -48,10 +49,10 @@ export default function GradeSelect({
                   a[index] = {
                     internalMarks: Number(ev.target.value),
                     grade: a[index].grade,
-                    requiredMarks: (((grade_points[a[index].grade] - Number(ev.target.value)) / 40) * 75)
+                    requiredMarks: Number(ev.target.value) == 0 ? 0 : (((grade_points[a[index].grade] - Number(ev.target.value)) / 40) * 75)
                   };
                   setCourse(a);
-                  setMarks(parseFloat((((grade_points[a[index].grade] - Number(ev.target.value)) / 40) * 75).toPrecision(3)))
+                  setMarks(Number(ev.target.value) == 0 ? 0 : parseFloat((((grade_points[a[index].grade] - Number(ev.target.value)) / 40) * 75).toPrecision(3)))
                 }}
               />
             </td>

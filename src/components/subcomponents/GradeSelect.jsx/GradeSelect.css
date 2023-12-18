@@ -37,7 +37,7 @@ table.grade-calc {
 }
 
 .required-marks {
-  border: 1px solid var(--border);
+  border: 1px solid var(--input);
   border-radius: 14px;
   color: var(--tip);
   padding: 0px 4px;
@@ -45,7 +45,7 @@ table.grade-calc {
   flex-direction: row;
   gap: 4px;
   padding: 5px 10px;
-  min-width: 80px;
+  min-width: 88px;
   justify-content: flex-end;
 }
 
@@ -125,4 +125,8 @@ select::-ms-expand {
 .cgpa h1 {
   font-size: 40px;
   color: var(--brand) !important;
+}
+
+#content {
+  gap: 18px;
 }
