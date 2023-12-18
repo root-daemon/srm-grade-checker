@@ -18,19 +18,7 @@ export default function GradeCalculator() {
     { grade: 'O', internalMarks: 0, requiredMarks: 0 },
   ]);
 
-  useEffect(() => {
-    requiredMarksCalculator();
-    console.log(courses);
-  }, [courses]);
 
-  function requiredMarksCalculator() {
-    console.log('calcualted');
-    courses.forEach((course) => {
-      var marks_required = grade_points[course.grade] - course.internalMarks;
-      console.log('marks_required', marks_required);
-      course.requiredMarks = (marks_required / 40) * 75;
-    });
-  }
   return (
     <div id="grade" className="sub-card">
       <div className="cpga">
@@ -49,7 +37,6 @@ export default function GradeCalculator() {
             index={index}
             courses={courses}
             setCourse={setCourse}
-            requiredMarksCalculator={requiredMarksCalculator}
           />
         ))}
       </table>

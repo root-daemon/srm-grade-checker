@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './GradeSelect.css';
 
 export default function GradeSelect({
   index,
-  requiredMarksCalculator,
   courses,
   setCourse,
 }) {
   const grade_points = {
-    O: 91,
+    'O': 91,
     'A+': 81,
-    A: 71,
+    'A': 71,
     'B+': 61,
-    B: 56,
-    C: 50,
+    'B': 56,
+    'C': 50,
   };
-  const requiredMarks = courses[index].requiredMarks;
+  const [requiredMarks, setMarks] = useState(0);
+
   return (
     <tr>
       <div className="content">
@@ -39,17 +39,18 @@ export default function GradeSelect({
                     : ''
                 }
                 onInput={(event) => {
-                  if (event.target.value > 100)
-                    event.target.value = event.target.value.slice(0, 2);
+                  if (event.target.value > 60)
+                    event.target.value = 60;
                 }}
                 onChange={(ev) => {
                   let a = [...courses];
                   a[index] = {
                     internalMarks: Number(ev.target.value),
                     grade: a[index].grade,
+                    requiredMarks: (((grade_points[a[index].grade] - Number(ev.target.value)) / 40) * 75)
                   };
                   setCourse(a);
-                  requiredMarks = ((a[index].grade - internalsMarks) / 40) * 75;
+                  setMarks(parseFloat((((grade_points[a[index].grade] - Number(ev.target.value)) / 40) * 75).toPrecision(3)))
                 }}
               />
             </td>
@@ -61,8 +62,10 @@ export default function GradeSelect({
                 a[index] = {
                   internalMarks: a[index].internalMarks,
                   grade: ev.target.value,
+                  requiredMarks: (((grade_points[ev.target.value] - a[index].internalMarks) / 40) * 75)
                 };
                 setCourse(a);
+                setMarks(parseFloat((((grade_points[ev.target.value] - a[index].internalMarks) / 40) * 75).toPrecision(3)))
               }}
               id="grade"
               value={courses[index].grade}
@@ -75,14 +78,12 @@ export default function GradeSelect({
               <option>C</option>
             </select>
           </td>
-          <td> {courses[index].requiredMarks > 75 ? (
-              <div>N/a</div>
-            ) : (
-              <div className="required-marks row d-flex">
-                <div className="col-6">{requiredMarks}</div>
-                <div className="col-6">/75</div>
-              </div>
-            )}
+          <td>
+            <div className="required-marks row d-flex">
+              <div className="col-6">{requiredMarks}</div>
+              <div className="col-6">/75</div>
+            </div>
+
           </td>
         </div>
       </div>
