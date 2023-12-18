@@ -4,9 +4,13 @@
   display: flex;
   gap: 12px;
   margin: 1vh;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 #sno.del {
+  -webkit-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  -o-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
   transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
   cursor: pointer;
 }
@@ -20,7 +24,9 @@
 table.grade-calc {
   font-size: 16px;
   width: -webkit-fill-available;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   max-width: 450px;
 }
 
@@ -32,6 +38,8 @@ table.grade-calc {
 }
 
 .add-course-button {
+  -webkit-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  -o-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
   transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
 }
 
@@ -40,7 +48,9 @@ table.grade-calc {
 }
 
 .add-course-button:hover {
-  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+          transform: scale(0.95);
 }
 
 #sno {
@@ -51,7 +61,9 @@ table.grade-calc {
   gap: 38px;
   border-radius: 10px;
   padding: 4px 8px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .internal-input {
@@ -70,12 +82,19 @@ table.grade-calc {
   border-radius: 14px;
   color: var(--tip);
   padding: 0px 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   gap: 4px;
   padding: 5px 10px;
   min-width: 88px;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 input {

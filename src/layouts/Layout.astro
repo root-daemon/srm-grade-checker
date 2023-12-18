@@ -49,6 +49,8 @@
     background: var(--bg);
     font-weight: 600;
     scroll-behavior: smooth;
+    -webkit-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    -o-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
     transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
   }
   h1,
@@ -63,6 +65,7 @@
 
   ::-webkit-scrollbar {
     width: 16px;
+    -webkit-transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92) !important;
     transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92) !important;
   }
 
