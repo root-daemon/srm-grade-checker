@@ -12,22 +12,31 @@ table.grade-calc {
   width: -webkit-fill-available;
   align-items: center;
   max-width: 450px;
+  max-height: 325px;
+  overflow: auto;
+  padding-top: 80px;
 }
+
 .add-course-button {
   background-color: var(--input);
   color: var(--sno);
   border: var(--border);
   border-radius: 12px;
+
 }
+
+.add-course-button {
+  transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .add-course {
-  margin-top: 20px;
+  margin-top: 10px;
 }
-.red-grade {
-  color: var(--red);
+
+.add-course-button:hover {
+  transform: scale(0.95);
 }
-.brand-grade {
-  color: var(--brand);
-}
+
 #sno {
   background-color: var(--input);
   display: -webkit-box;
