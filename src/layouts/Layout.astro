@@ -15,6 +15,11 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <!-- Option 1: Include in HTML -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css"
+    />
 
     <title>GradeX</title>
   </head>
@@ -44,15 +49,24 @@
     background: var(--bg);
     font-weight: 600;
     scroll-behavior: smooth;
-    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    -o-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  }
+  h1,
+  h2,
+  h3 {
+    font-weight: 800 !important;
   }
   * {
     font-family: "Manrope";
+    font-weight: 600;
   }
 
   ::-webkit-scrollbar {
     width: 16px;
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    -webkit-transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92) !important;
+    transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92) !important;
   }
 
   ::-webkit-scrollbar-track {
@@ -81,5 +95,4 @@
   ::-webkit-scrollbar-button {
     display: none;
   }
-
 </style>

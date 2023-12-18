@@ -8,7 +8,7 @@ import GradeCalculator from "../components/grade";
 <Layout title="GradeX">
   <main>
     <header id="head">
-      <h2 class="title">GradeX</h2>
+      <h2 class="title">GradeX</h2> <a data-alt="open source code" target="_blank" title="Source Code" href="https://github.com/root-daemon/srm-grade-checker"><i class:list={["bi", "bi-github"]}></i></a>
     </header>
     <div class="container">
       <div class="row">
@@ -56,7 +56,30 @@ import GradeCalculator from "../components/grade";
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 100vw;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .bi-github {
+    display: block;
+    font-size: 28px;
+    color: var(--border);
+    cursor: pointer;
+    -webkit-transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    -o-transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  }
+  .bi-github:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    text-shadow:0px 0px 8px var(--border);
+    color: var(--brand);
+    opacity: 0.8;
   }
   .container {
     max-width: none;
@@ -69,8 +92,10 @@ import GradeCalculator from "../components/grade";
     color: var(--brand);
     font-weight: 600;
     text-align: left;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: resize;
+    -webkit-transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    -o-transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    cursor: cell;
   }
 
   .title:hover {
@@ -160,7 +185,8 @@ import GradeCalculator from "../components/grade";
     padding: 4px;
     background: #0e100e;
     border-radius: 14px;
-    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.4);
   }
 
   .mobile a {
@@ -178,9 +204,14 @@ import GradeCalculator from "../components/grade";
   /* Tablet */
   @media only screen and (max-width: 810px) {
     .row {
-      flex-direction: column;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
       gap: 16px;
-      align-items: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
     }
     .col-6 {
       width: 100vw;
@@ -206,6 +237,8 @@ import GradeCalculator from "../components/grade";
     }
 
     .mobile {
+      display: -webkit-box !important;
+      display: -ms-flexbox !important;
       display: flex !important;
     }
     .col-6 {
@@ -215,6 +248,8 @@ import GradeCalculator from "../components/grade";
 
   @media only screen and (max-width: 360px) {
     .mobile {
+      display: -webkit-box !important;
+      display: -ms-flexbox !important;
       display: flex !important;
     }
     .row {

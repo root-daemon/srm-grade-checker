@@ -13,7 +13,9 @@
   gap: 38px;
   border-radius: 10px;
   padding: 4px 8px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .cred-input {
   background-color: var(--input);
@@ -24,16 +26,37 @@
   color: var(--sno);
   font-size: 16px;
 }
-
+#sno.del {
+  -webkit-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  -o-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  cursor: pointer;
+}
+#sno.del:hover {
+  background: var(--red);
+}
+#sno.del:hover label {
+  color: var(--bg) !important;
+  cursor: pointer;
+}
 table {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 th {
   font-size: 12px;
   color: var(--sno);
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
 }
 td {
@@ -72,12 +95,16 @@ select {
   text-indent: 1px;
   -o-text-overflow: '';
   text-overflow: '';
-  transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  -o-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
   cursor: pointer;
 }
 
 select:hover {
-  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+          transform: scale(0.95);
 }
 
 select::-ms-expand {
