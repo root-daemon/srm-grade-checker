@@ -12,7 +12,7 @@ table.grade-calc {
   width: -webkit-fill-available;
   align-items: center;
   max-width: 450px;
-`}
+}
 
 .add-course-button {
   background-color: var(--input);
