@@ -20,6 +20,7 @@ export default function GradeSelect({
     <tr>
       <div className="content">
         <div id="content">
+          <div style={{display: 'flex', gap: 8}}>
           <div className="internal-input">
             <td>
               <div id="sno">
@@ -57,6 +58,7 @@ export default function GradeSelect({
           </div>
           <td>
             <select
+            className='grade-calc'
               onChange={(ev) => {
                 let a = [...courses];
                 a[index] = {
@@ -78,15 +80,15 @@ export default function GradeSelect({
               <option>C</option>
             </select>
           </td>
+          </div>
           <td>
-            <div className="required-marks row d-flex">
-              <div className="col-6">{requiredMarks}</div>
-              <div className="col-6">/75</div>
+            <div className="required-marks">
+              <p style={requiredMarks == 0 ?  {color: 'var(--tip)'} : {color: 'var(--brand)'}}>{requiredMarks}</p>
+              <p>/75</p>
             </div>
-
           </td>
         </div>
       </div>
-    </tr>
+    </tr >
   );
 }

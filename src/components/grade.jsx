@@ -24,7 +24,7 @@ export default function GradeCalculator() {
       <div className="cpga">
         <p className="text">Grade</p>
       </div>
-      <table>
+      <table className='grade-calc'>
         <tr>
           <th>S.no</th>
           <th>Internals</th>
