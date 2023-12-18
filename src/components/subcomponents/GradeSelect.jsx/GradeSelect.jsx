@@ -84,7 +84,7 @@ export default function GradeSelect({
           </div>
           <td>
             <div className="required-marks">
-              <p style={requiredMarks == 0 ?  {color: 'var(--tip)'} : {color: 'var(--brand)'}}>{requiredMarks}</p>
+              <p style={requiredMarks <= 0 ?  {color: 'var(--tip)', fontWeight: 800 } : (requiredMarks > 75 ? {color: 'var(--red)'} : {color: 'var(--brand)'})}>{requiredMarks}</p>
               <p>/75</p>
             </div>
           </td>
