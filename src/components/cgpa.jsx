@@ -42,7 +42,11 @@ export default function CGPA() {
 
     setCgpa(isNaN(gpa) ? 0 : parseFloat(gpa.toPrecision(3)));
   }
-
+  function handleOnClick() {
+    if (courses.length < 7) {
+      setCourse([...courses, { cred: 0, grade: 'O' }]);
+    }
+  }
   return (
     <div id="cgpa" className="sub-card">
       <div className="cgpa">
@@ -67,6 +71,14 @@ export default function CGPA() {
           ))}
         </div>
       </table>
+      <div className="row add-course">
+        <div
+          onClick={handleOnClick}
+          className="btn btn-success add-course-button"
+        >
+          Add a Course
+        </div>
+      </div>
     </div>
   );
 }

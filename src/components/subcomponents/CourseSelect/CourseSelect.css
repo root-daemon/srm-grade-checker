@@ -126,3 +126,12 @@ select::-ms-expand {
   font-size: 40px;
   color: var(--brand) !important;
 }
+.add-course-button {
+  background-color: var(--input);
+  color: var(--sno);
+  border: var(--border);
+  border-radius: 12px;
+}
+.add-course {
+  margin-top: 20px;
+}

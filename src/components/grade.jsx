@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import GradeSelect from './subcomponents/GradeSelect.jsx/GradeSelect';
+import GradeSelect from './subcomponents/GradeSelect/GradeSelect';
 const grade_points = {
   O: 91,
   'A+': 81,
@@ -17,14 +17,21 @@ export default function GradeCalculator() {
     { grade: 'O', internalMarks: 0, requiredMarks: 0 },
     { grade: 'O', internalMarks: 0, requiredMarks: 0 },
   ]);
-
+  function handleOnClick() {
+    if (courses.length < 7) {
+      setCourse([
+        ...courses,
+        { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+      ]);
+    }
+  }
 
   return (
     <div id="grade" className="sub-card">
       <div className="cpga">
         <p className="text">Grade</p>
       </div>
-      <table className='grade-calc'>
+      <table className="grade-calc">
         <tr>
           <th>S.no</th>
           <th>Internals</th>
@@ -40,6 +47,14 @@ export default function GradeCalculator() {
           />
         ))}
       </table>
+      <div className="row add-course">
+        <div
+          onClick={handleOnClick}
+          className="btn btn-success add-course-button"
+        >
+          Add a Course
+        </div>
+      </div>
     </div>
   );
 }

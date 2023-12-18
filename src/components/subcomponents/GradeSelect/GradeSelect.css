@@ -13,7 +13,15 @@ table.grade-calc {
   align-items: center;
   max-width: 450px;
 }
-
+.add-course-button {
+  background-color: var(--input);
+  color: var(--sno);
+  border: var(--border);
+  border-radius: 12px;
+}
+.add-course {
+  margin-top: 20px;
+}
 #sno {
   background-color: var(--input);
   display: -webkit-box;
@@ -24,6 +32,7 @@ table.grade-calc {
   padding: 4px 8px;
   align-items: center;
 }
+
 
 .internal-input {
   background-color: var(--input);
