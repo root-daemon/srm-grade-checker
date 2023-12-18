@@ -1,14 +1,24 @@
 import './CourseSelect.css';
 
 export default function CourseSelect({ cno, courses, setCourse }) {
+
+  function del(i) {
+    if ((i + 1 == courses.length) && courses.length != 1) {
+      let a = [...courses]
+      a.pop()
+      setCourse(a)
+    }
+  }
+
   return (
     <tr>
       <div id="content">
         <div className="cred-input">
           <td>
-            <div id="sno">
-              <label htmlFor='course-input'>{cno}.</label>
+            <div id="sno" className={((cno == courses.length) && courses.length != 1) ? "del" : ""}>
+              <label title={((cno == courses.length) && courses.length != 1) ? "Delete" : ""} onClick={() => del(cno-1)} htmlFor='course-input'>{cno}.</label>
             </div>
+
           </td>
           <td>
             <input

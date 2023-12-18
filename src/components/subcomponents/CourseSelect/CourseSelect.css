@@ -24,7 +24,17 @@
   color: var(--sno);
   font-size: 16px;
 }
-
+#sno.del {
+  transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  cursor: pointer;
+}
+#sno.del:hover {
+  background: var(--red);
+}
+#sno.del:hover label {
+  color: var(--bg) !important;
+  cursor: pointer;
+}
 table {
   justify-content: center;
   display: flex;
@@ -72,7 +82,7 @@ select {
   text-indent: 1px;
   -o-text-overflow: '';
   text-overflow: '';
-  transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
   cursor: pointer;
 }
 

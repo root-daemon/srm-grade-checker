@@ -6,7 +6,17 @@
   margin: 1vh;
   align-items: center;
 }
-
+#sno.del {
+  transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+  cursor: pointer;
+}
+#sno.del:hover {
+  background: var(--red);
+}
+#sno.del:hover label {
+  color: var(--bg) !important;
+  cursor: pointer;
+}
 table.grade-calc {
   font-size: 16px;
   width: -webkit-fill-available;
@@ -22,7 +32,7 @@ table.grade-calc {
 }
 
 .add-course-button {
-  transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
 }
 
 .add-course {

@@ -19,6 +19,7 @@ export default function GradeCalculator() {
     }
   }
   useEffect(() => {
+    console.clear()
     const handleKeyDown = (event) => {
       if (event.key.toLowerCase() == 'f') {
         setAvg('F');
@@ -31,7 +32,7 @@ export default function GradeCalculator() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-    console.clear()
+    
   }, []);
 
   function calculateAvgGrade() {
@@ -102,7 +103,7 @@ export default function GradeCalculator() {
           <th>Grade</th>
           <th>Required Marks</th>
         </tr>
-        {courses.map((_el, index) => (
+        {courses && courses.map((_el, index) => (
           <GradeSelect
             key={index}
             index={index}
