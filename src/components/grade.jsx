@@ -9,6 +9,7 @@ export default function GradeCalculator() {
     { grade: 'O', internalMarks: 0, requiredMarks: 0 },
     { grade: 'O', internalMarks: 0, requiredMarks: 0 },
   ]);
+  const [avg, setAvg] = useState('O');
   function handleOnClick() {
     if (courses.length < 7) {
       setCourse([
@@ -17,63 +18,83 @@ export default function GradeCalculator() {
       ]);
     }
   }
-
-  const [avg, setAvg] = useState('O')
-
   useEffect(() => {
-    let o = 0, a = 0, ap = 0, b = 0, bp = 0, c = 0;
+    const handleKeyDown = (event) => {
+      if (event.key.toLowerCase() == 'f') {
+        setAvg('F');
+        setTimeout(() => {
+          calculateAvgGrade();
+        }, 5000);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  function calculateAvgGrade() {
+    let o = 0,
+      a = 0,
+      ap = 0,
+      b = 0,
+      bp = 0,
+      c = 0;
     courses.forEach((e) => {
       switch (e.grade) {
         case 'O':
-          o++
+          o++;
           break;
         case 'A':
-          a++
+          a++;
           break;
 
         case 'A+':
-          ap++
+          ap++;
           break;
 
         case 'B':
-          b++
+          b++;
           break;
 
         case 'B+':
-          bp++
+          bp++;
           break;
 
         case 'C':
-          c++
+          c++;
           break;
 
         default:
           break;
-
       }
 
       var tempObj = {
-        "O": o,
-        "A": a,
-        "A+": ap,
-        "B": b,
-        "B+": bp,
-        "C": c
-      }
+        O: o,
+        A: a,
+        'A+': ap,
+        B: b,
+        'B+': bp,
+        C: c,
+      };
 
-      var max = Object.entries(tempObj).reduce((prev, current) => (prev[1] > current[1]) ? prev : current)[0];
-      setAvg(max)
-    })
-  }, [courses])
-
+      var max = Object.entries(tempObj).reduce((prev, current) =>
+        prev[1] > current[1] ? prev : current
+      )[0];
+      setAvg(max);
+    });
+  }
+  useEffect(() => {
+    calculateAvgGrade();
+  }, [courses]);
 
   return (
     <div id="grade" className="sub-card">
       <div className="grd">
-        <h1>{avg}</h1>
+        <h1 className={avg == 'F' ? 'red-grade' : 'brand-grade'}>{avg}</h1>
         <p className="text">Grade</p>
       </div>
-      <table className='grade-calc'>
+      <table className="grade-calc">
         <tr style={{ display: 'flex', gap: 18 }}>
           <th>S.no</th>
           <th>Internals</th>

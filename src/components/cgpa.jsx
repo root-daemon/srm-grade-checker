@@ -17,6 +17,7 @@ const grade_points = {
 
 export default function CGPA() {
   const [cgpa, setCgpa] = useState(0);
+  const [clicks, setClicks] = useState(0);
   const [courses, setCourse] = useState([
     { cred: 0, grade: 'O' },
     { cred: 0, grade: 'O' },
@@ -28,6 +29,7 @@ export default function CGPA() {
   useEffect(() => {
     cgpaCalculator();
   }, [courses]);
+
 
   function cgpaCalculator() {
     var points = 0;
@@ -47,10 +49,20 @@ export default function CGPA() {
       setCourse([...courses, { cred: 0, grade: 'O' }]);
     }
   }
+  function handleEasterOnClick() {
+    if (clicks >= 7) {
+      setClicks(clicks + 1);
+      setTimeout(() => {
+        setClicks(0);
+      }, 5000);
+    } else {
+      setClicks(clicks + 1);
+    }
+  }
   return (
     <div id="cgpa" className="sub-card">
-      <div className="cgpa">
-        <h1>{cgpa}</h1>
+      <div className="cgpa" onClick={handleEasterOnClick}>
+        <h1>{clicks > 7 ? 6.9 : cgpa}</h1>
         <p className="text">CGPA</p>
       </div>
       <table>
