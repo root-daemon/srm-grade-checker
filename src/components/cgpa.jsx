@@ -54,7 +54,7 @@ export default function CGPA() {
         <p className="text">CGPA</p>
       </div>
       <table>
-        <tr style={{ padding: '1vh' }}>
+        <tr>
           <th style={{ width: '10%' }}>S.no</th>
           <th>Cred</th>
           <th>Grade</th>
