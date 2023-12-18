@@ -92,6 +92,7 @@ select::-ms-expand {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 8px;
   border: 1px solid var(--border);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -125,4 +126,5 @@ select::-ms-expand {
 .cgpa h1 {
   font-size: 40px;
   color: var(--brand) !important;
+  font-weight: 800;
 }
