@@ -29,9 +29,6 @@ table {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  max-height: 325px;
-  overflow: auto;
-  padding-top: 80px;
 }
 th {
   font-size: 12px;
@@ -140,4 +137,3 @@ select::-ms-expand {
 .add-course {
   margin-top: 10px;
 }
-

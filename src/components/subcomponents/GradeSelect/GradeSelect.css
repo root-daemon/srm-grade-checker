@@ -12,17 +12,13 @@ table.grade-calc {
   width: -webkit-fill-available;
   align-items: center;
   max-width: 450px;
-  max-height: 325px;
-  overflow: auto;
-  padding-top: 80px;
-}
+`}
 
 .add-course-button {
   background-color: var(--input);
   color: var(--sno);
   border: var(--border);
   border-radius: 12px;
-
 }
 
 .add-course-button {
