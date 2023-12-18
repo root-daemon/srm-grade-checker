@@ -4,10 +4,16 @@
   display: flex;
   gap: 12px;
   margin: 1vh;
+  align-items: center;
 }
-table {
+
+table.grade-calc {
   font-size: 16px;
+  width: -webkit-fill-available;
+  align-items: center;
+  max-width: 450px;
 }
+
 #sno {
   background-color: var(--input);
   display: -webkit-box;
@@ -18,11 +24,13 @@ table {
   padding: 4px 8px;
   align-items: center;
 }
+
 .internal-input {
   background-color: var(--input);
   border-radius: 10px;
   padding: 0;
 }
+
 #sno label {
   color: var(--sno);
   font-size: 16px;
@@ -30,9 +38,17 @@ table {
 
 .required-marks {
   border: 1px solid var(--border);
-  border-radius: 15px;
+  border-radius: 14px;
   color: var(--tip);
+  padding: 0px 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding: 5px 10px;
+  min-width: 80px;
+  justify-content: flex-end;
 }
+
 input {
   background: transparent;
   color: var(--text-color);
@@ -51,10 +67,10 @@ select:focus {
   border: 0px none;
 }
 
-select {
+select.grade-calc {
   background-color: var(--input);
   border-radius: 10px;
-  padding: 4px 8px;
+  padding: 4px 16px;
   color: var(--text-color);
   text-align: center;
   -webkit-appearance: none;
