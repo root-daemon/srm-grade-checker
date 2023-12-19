@@ -18,14 +18,17 @@ const grade_points = {
 export default function CGPA() {
   const [cgpa, setCgpa] = useState(0);
   const [clicks, setClicks] = useState(0);
-  const [courses, setCourse] = useState([
-    { cred: 0, grade: 'O' },
-    { cred: 0, grade: 'O' },
-    { cred: 0, grade: 'O' },
-    { cred: 0, grade: 'O' },
-    { cred: 0, grade: 'O' },
-  ]);
+  const [courses, setCourse] = useState([]);
 
+  useEffect(() => {
+    setCourse([
+      { cred: 0, grade: 'O' },
+      { cred: 0, grade: 'O' },
+      { cred: 0, grade: 'O' },
+      { cred: 0, grade: 'O' },
+      { cred: 0, grade: 'O' },
+    ])
+  }, [])
   useEffect(() => {
     cgpaCalculator();
   }, [courses]);

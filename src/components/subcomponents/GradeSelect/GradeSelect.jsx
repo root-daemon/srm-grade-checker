@@ -5,7 +5,13 @@ export default function GradeSelect({
   index,
   courses,
   setCourse,
-}) {
+} = { index: 1, courses: [
+  { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+  { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+  { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+  { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+  { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+] }) {
   const grade_points = {
     'O': 91,
     'A+': 81,
