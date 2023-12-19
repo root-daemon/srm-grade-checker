@@ -1,15 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import GradeSelect from './subcomponents/GradeSelect/GradeSelect.jsx';
 
 export default function GradeCalculator() {
-  const [courses, setCourse] = useState([
-    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
-    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
-    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
-    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
-    { grade: 'O', internalMarks: 0, requiredMarks: 0 },
-  ]);
+  const [courses, setCourse] = useState([]);
   const [avg, setAvg] = useState('O');
+
   function handleOnClick() {
     if (courses.length < 7) {
       setCourse([
@@ -19,7 +14,6 @@ export default function GradeCalculator() {
     }
   }
   useEffect(() => {
-    console.clear()
     const handleKeyDown = (event) => {
       if (event.key.toLowerCase() == 'f') {
         setAvg('F');
@@ -28,11 +22,20 @@ export default function GradeCalculator() {
         }, 5000);
       }
     };
+
+    setCourse([
+      { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+      { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+      { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+      { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+      { grade: 'O', internalMarks: 0, requiredMarks: 0 },
+    ])
+
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-    
+
   }, []);
 
   function calculateAvgGrade() {
@@ -86,7 +89,7 @@ export default function GradeCalculator() {
       setAvg(max);
     });
   }
-  useEffect(() => {
+  useMemo(() => {
     calculateAvgGrade();
   }, [courses]);
 
