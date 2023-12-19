@@ -98,7 +98,7 @@ export default function GradeCalculator() {
         <h1 className={avg == 'F' ? 'red-grade' : 'brand-grade'}>{avg}</h1>
         <p className="text">Grade</p>
       </div>
-      {courses[1] && <table className="grade-calc">
+      {courses[0] && <table className="grade-calc">
         <thead>
           <tr style={{ display: 'flex', gap: 18 }}>
             <th>S.no</th>
