@@ -35,7 +35,6 @@ export default function GradeSelect({
                   <label title={((index + 1 == courses.length) && courses.length != 1) ? "Delete" : ""} onClick={() => del(index)} htmlFor='grade-input'>{index + 1}.</label>
                 </div>
               </td>
-
               <td>
                 <input
                   type="number"

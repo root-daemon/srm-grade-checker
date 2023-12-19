@@ -30,7 +30,6 @@ export default function CGPA() {
     cgpaCalculator();
   }, [courses]);
 
-
   function cgpaCalculator() {
     var points = 0;
     var sum_credit = 0;
@@ -66,22 +65,26 @@ export default function CGPA() {
         <p className="text">CGPA</p>
       </div>
       <table>
-        <tr>
-          <th style={{ width: '10%' }}>S.no</th>
-          <th>Cred</th>
-          <th>Grade</th>
-        </tr>
-        <div className="input-table">
-          {courses.map((_el, index) => (
-            <CourseSelect
-              key={index}
-              cno={index + 1}
-              courses={courses}
-              setCourse={setCourse}
-              cgpaCalculator={cgpaCalculator}
-            />
-          ))}
-        </div>
+        <thead>
+          <tr>
+            <th style={{ width: '10%' }}>S.no</th>
+            <th>Cred</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <div className="input-table">
+            {courses.map((_el, index) => (
+              <CourseSelect
+                key={index}
+                cno={index + 1}
+                courses={courses}
+                setCourse={setCourse}
+                cgpaCalculator={cgpaCalculator}
+              />
+            ))}
+          </div>
+        </tbody>
       </table>
       <div className="row add-course">
         <div

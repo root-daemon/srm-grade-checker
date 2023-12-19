@@ -19,7 +19,6 @@ export default function GradeCalculator() {
     }
   }
   useEffect(() => {
-    console.clear()
     const handleKeyDown = (event) => {
       if (event.key.toLowerCase() == 'f') {
         setAvg('F');
@@ -32,7 +31,6 @@ export default function GradeCalculator() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-    
   }, []);
 
   function calculateAvgGrade() {
@@ -97,20 +95,25 @@ export default function GradeCalculator() {
         <p className="text">Grade</p>
       </div>
       <table className="grade-calc">
-        <tr style={{ display: 'flex', gap: 18 }}>
-          <th>S.no</th>
-          <th>Internals</th>
-          <th>Grade</th>
-          <th>Required Marks</th>
-        </tr>
-        {courses && courses.map((_el, index) => (
-          <GradeSelect
-            key={index}
-            index={index}
-            courses={courses}
-            setCourse={setCourse}
-          />
-        ))}
+        <thead>
+          <tr style={{ display: 'flex', gap: 18 }}>
+            <th>S.no</th>
+            <th>Internals</th>
+            <th>Grade</th>
+            <th>Required Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+          {courses &&
+            courses.map((_el, index) => (
+              <GradeSelect
+                key={index}
+                index={index}
+                courses={courses}
+                setCourse={setCourse}
+              />
+            ))}
+        </tbody>
       </table>
       <div className="row add-course">
         <div

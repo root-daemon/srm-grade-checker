@@ -5,8 +5,8 @@
   gap: 12px;
   margin: 1vh;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 #sno.del {
   -webkit-transition: 0.2s cubic-bezier(0.21, 0.67, 0.31, 0.92);
@@ -25,8 +25,8 @@ table.grade-calc {
   font-size: 16px;
   width: -webkit-fill-available;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   max-width: 450px;
 }
 
@@ -49,8 +49,8 @@ table.grade-calc {
 
 .add-course-button:hover {
   -webkit-transform: scale(0.95);
-      -ms-transform: scale(0.95);
-          transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 #sno {
@@ -62,8 +62,8 @@ table.grade-calc {
   border-radius: 10px;
   padding: 4px 8px;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .internal-input {
@@ -75,6 +75,7 @@ table.grade-calc {
 #sno label {
   color: var(--sno);
   font-size: 16px;
+  width: 16px;
 }
 
 .required-marks {
@@ -87,14 +88,14 @@ table.grade-calc {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   gap: 4px;
   padding: 5px 10px;
   min-width: 88px;
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
 }
 
 input {
