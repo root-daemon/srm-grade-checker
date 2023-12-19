@@ -67,28 +67,24 @@ export default function CGPA() {
         <h1>{clicks > 7 ? 6.9 : cgpa}</h1>
         <p className="text">CGPA</p>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th style={{ width: '10%' }}>S.no</th>
-            <th>Cred</th>
-            <th>Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          <div className="input-table">
-            {courses.map((_el, index) => (
-              <CourseSelect
-                key={index}
-                cno={index + 1}
-                courses={courses}
-                setCourse={setCourse}
-                cgpaCalculator={cgpaCalculator}
-              />
-            ))}
-          </div>
-        </tbody>
-      </table>
+      {courses[1] && (<table>
+        <tr>
+          <th style={{ width: '10%' }}>S.no</th>
+          <th>Cred</th>
+          <th>Grade</th>
+        </tr>
+        <div className="input-table">
+          {courses.map((_el, index) => (
+            <CourseSelect
+              key={index}
+              cno={index + 1}
+              courses={courses}
+              setCourse={setCourse}
+              cgpaCalculator={cgpaCalculator}
+            />
+          ))}
+        </div>
+      </table>)}
       <div className="row add-course">
         <div
           onClick={handleOnClick}
