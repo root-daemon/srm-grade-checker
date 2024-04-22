@@ -1,14 +1,21 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
-import CGPA from "../components/cgpa";
-import GradeCalculator from "../components/grade"; 
+import Layout from '../layouts/Layout.astro';
+import CGPA from '../components/cgpa';
+import GradeCalculator from '../components/grade';
+import Login from '../components/login';
 ---
 
 <Layout title="GradeX">
   <main>
     <header id="head">
-      <h2 class="title">GradeX</h2> <a data-alt="open source code" target="_blank" title="Source Code" href="https://github.com/root-daemon/srm-grade-checker"><i class:list={["bi", "bi-github"]}></i></a>
+      <h2 class="title">GradeX</h2>
+      <a
+        data-alt="open source code"
+        target="_blank"
+        title="Source Code"
+        href="https://github.com/root-daemon/srm-grade-checker"
+        ><i class:list={['bi', 'bi-github']}></i></a
+      >
     </header>
     <div class="container">
       <div class="row">
@@ -22,238 +29,293 @@ import GradeCalculator from "../components/grade";
         <div class="col-6">
           <div class="card">
             <h2>Grade Calculator</h2>
-            <GradeCalculator client:load>
+            <GradeCalculator client:load />
+            <button
+              id="loginBtn"
+              class="btn btn-success add-course-button w-40 my-3 mx-3"
+            >
+              <i class="bi bi-plus"></i> Get Internals
+            </button>
           </div>
         </div>
       </div>
-    </div>
-    <div class="mobile">
-      <a href="#cgpa" id="cgpa-toggle" class="active">CGPA</a>
-      <a id="grade-toggle" href="#grade">Grade</a>
+      <div class="mobile">
+        <a href="#cgpa" id="cgpa-toggle" class="active">CGPA</a>
+        <a id="grade-toggle" href="#grade">Grade</a>
+      </div>
+      <div class="login-box">
+        <div class="card d-flex login-subbox">
+          <Login client:load />
+        </div>
+      </div>
     </div>
   </main>
-</Layout>
-<script>
-  const ct = document.getElementById("cgpa-toggle");
-  const gt = document.getElementById("grade-toggle");
+  <script>
+    const ct = document.getElementById('cgpa-toggle');
+    const gt = document.getElementById('grade-toggle');
 
-  ct.addEventListener("click", (e) => {
-    ct.classList.add("active");
-    gt.classList.remove("active");
-  });
-  gt.addEventListener("click", (e) => {
-    gt.classList.add("active");
-    ct.classList.remove("active");
-  });
-</script>
+    ct.addEventListener('click', (e) => {
+      ct.classList.add('active');
+      gt.classList.remove('active');
+    });
+    gt.addEventListener('click', (e) => {
+      gt.classList.add('active');
+      ct.classList.remove('active');
+    });
 
-<style>
-  #head {
-    padding: 28px 36px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    width: 100vw;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  .bi-github {
-    display: block;
-    font-size: 28px;
-    color: var(--border);
-    cursor: pointer;
-    -webkit-transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
-    -o-transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
-    transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
-  }
-  .bi-github:hover {
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
-    text-shadow:0px 0px 8px var(--border);
-    color: var(--brand);
-    opacity: 0.8;
-  }
-  .container {
-    max-width: none;
-  }
-  .row {
-    margin: 12px;
-  }
-  .title {
-    font-size: 36px;
-    color: var(--brand);
-    font-weight: 600;
-    text-align: left;
-    -webkit-transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
-    -o-transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
-    transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
-    cursor: cell;
-  }
+    document.getElementById('loginBtn').addEventListener('click', function () {
+      document.getElementById('login-box').style.display = 'block';
+    });
 
-  .title:hover {
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: var(--brand);
-    color: transparent;
-    font-size: 34px;
-  }
+    document.addEventListener('DOMContentLoaded', function () {
+      const loginBtn = document.querySelector('#loginBtn'); // Select by ID
+      const loginBox = document.querySelector('.login-box'); // Select by class name
 
-  .card {
-    height: 80vh;
-    background-color: var(--card);
-    color: var(--text-color);
-    border-radius: 38px;
-    border: 1px solid var(--border);
-    padding: 1vh;
-  }
-  .card h2 {
-    margin: 8px 16px;
-    color: #f5f5f5;
-  }
-  main {
-    background: var(--bg);
-    margin: auto;
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-    height: 100vh;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
+      loginBtn.addEventListener('click', function () {
+        loginBox.style.display = 'flex';
+      });
 
-  .sub-card {
-    background-color: var(--incard);
-    height: 100%;
-    border-radius: 32px;
-    border-color: var(--border);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    border: 1px solid var(--border);
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    padding: 10px;
-  }
+      // Close login box when clicking outside of it
+      document.addEventListener('click', function (event) {
+        if (!loginBox.contains(event.target) && event.target !== loginBtn) {
+          closeLoginBox();
+        }
+      });
+    });
 
-  .cgpa {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: baseline;
-    -ms-flex-align: baseline;
-    align-items: baseline;
-    gap: 6px;
-  }
-  .text {
-    color: #3e3f3e !important;
-    font-weight: 600;
-    font-size: 14px;
-  }
+    // Define closeLoginBox function in the global scope
+    function closeLoginBox() {
+      const loginBox = document.querySelector('.login-box'); // Select by class name
+      loginBox.style.display = 'none';
+    }
+  </script>
 
-  .cgpa h1 {
-    font-size: 40px;
-    color: var(--brand) !important;
-  }
-
-  .mobile {
-    display: none;
-    position: fixed;
-    bottom: 18px;
-    padding: 4px;
-    background: #0e100e;
-    border-radius: 14px;
-    -webkit-box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.4);
-            box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.4);
-  }
-
-  .mobile a {
-    padding: 6px 36px;
-    font-size: 16px;
-    border-radius: 10px;
-    color: #d8ffc6;
-  }
-
-  .mobile a.active {
-    background: var(--brand);
-    color: var(--bg);
-  }
-
-  /* Tablet */
-  @media only screen and (max-width: 810px) {
-    .row {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column;
-      gap: 16px;
+  <style>
+    #head {
+      padding: 28px 36px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
       -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
-    }
-    .col-6 {
+      -ms-flex-align: center;
+      align-items: center;
       width: 100vw;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
     }
-  }
+    .login-subbox {
+      justify-content: center;
+      align-items: center;
+      width: 550px;
+      height: 350px !important;
+    }
 
-  /* Mobile */
-  @media only screen and (max-width: 500px) {
-    .container {
-      padding: 5px !important;
+    .login-box {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      justify-content: center;
+      align-items: center;
     }
-    .card h2 {
-      margin: 9px 18px;
+    .bi-github {
+      display: block;
+      font-size: 28px;
+      color: var(--border);
+      cursor: pointer;
+      -webkit-transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+      -o-transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+      transition: 0.4s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+    }
+    .bi-github:hover {
+      -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1);
+      text-shadow: 0px 0px 8px var(--border);
+      color: var(--brand);
+      opacity: 0.8;
+    }
+    .container {
+      max-width: none;
+    }
+    .row {
+      margin: 12px;
+    }
+    .title {
+      font-size: 36px;
+      color: var(--brand);
+      font-weight: 600;
+      text-align: left;
+      -webkit-transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+      -o-transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+      transition: 0.3s cubic-bezier(0.21, 0.67, 0.31, 0.92);
+      cursor: cell;
+    }
+
+    .title:hover {
+      -webkit-text-stroke-width: 0.5px;
+      -webkit-text-stroke-color: var(--brand);
+      color: transparent;
+      font-size: 34px;
     }
 
     .card {
-      padding: 0.5vh;
-      border-radius: 28px;
+      height: 80vh;
+      background-color: var(--card);
+      color: var(--text-color);
+      border-radius: 38px;
+      border: 1px solid var(--border);
+      padding: 1vh;
+    }
+    .card h2 {
+      margin: 8px 16px;
+      color: #f5f5f5;
+    }
+    main {
+      background: var(--bg);
+      margin: auto;
+      color: white;
+      font-size: 20px;
+      line-height: 1.6;
+      height: 100vh;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
     }
 
     .sub-card {
-      border-radius: 26px;
+      background-color: var(--incard);
+      height: 100%;
+      border-radius: 32px;
+      border-color: var(--border);
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      border: 1px solid var(--border);
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .cgpa {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .text {
+      color: #3e3f3e !important;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .cgpa h1 {
+      font-size: 40px;
+      color: var(--brand) !important;
     }
 
     .mobile {
-      display: -webkit-box !important;
-      display: -ms-flexbox !important;
-      display: flex !important;
+      display: none;
+      position: fixed;
+      bottom: 18px;
+      padding: 4px;
+      background: #0e100e;
+      border-radius: 14px;
+      -webkit-box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.4);
     }
-    .col-6 {
-      padding: 0px;
-    }
-  }
 
-  @media only screen and (max-width: 360px) {
-    .mobile {
-      display: -webkit-box !important;
-      display: -ms-flexbox !important;
-      display: flex !important;
+    .mobile a {
+      padding: 6px 36px;
+      font-size: 16px;
+      border-radius: 10px;
+      color: #d8ffc6;
     }
-    .row {
-      margin: 0px;
+
+    .mobile a.active {
+      background: var(--brand);
+      color: var(--bg);
     }
-  }
-</style>
+
+    /* Tablet */
+    @media only screen and (max-width: 810px) {
+      .row {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        gap: 16px;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      .col-6 {
+        width: 100vw;
+      }
+    }
+
+    /* Mobile */
+    @media only screen and (max-width: 500px) {
+      .container {
+        padding: 5px !important;
+      }
+      .card h2 {
+        margin: 9px 18px;
+      }
+
+      .card {
+        padding: 0.5vh;
+        border-radius: 28px;
+      }
+
+      .sub-card {
+        border-radius: 26px;
+      }
+
+      .mobile {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+      }
+      .col-6 {
+        padding: 0px;
+      }
+    }
+
+    @media only screen and (max-width: 360px) {
+      .mobile {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+      }
+      .row {
+        margin: 0px;
+      }
+    }
+  </style>
+</Layout>
