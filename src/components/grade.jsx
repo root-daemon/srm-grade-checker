@@ -1,10 +1,12 @@
+import CryptoJS from 'crypto-js';
 import { useEffect, useMemo, useState } from 'react';
 import GradeSelect from './subcomponents/GradeSelect/GradeSelect.jsx';
 
 export default function GradeCalculator() {
   const [courses, setCourse] = useState([]);
   const [avg, setAvg] = useState('O');
-
+  const [cookie, setCookie] = useState('');
+  const [marks, setMarks] = useState(null);
   function handleOnClick() {
     if (courses.length < 7) {
       setCourse([
@@ -92,6 +94,38 @@ export default function GradeCalculator() {
     calculateAvgGrade();
   }, [courses]);
 
+
+  useEffect(()=>{
+    // console.log(import.meta.env.PUBLIC_SECRET);
+    fetch('https://academia-pro.vercel.app/api/getCookie', {method: 'GET',  
+    headers: {
+      Connection: 'keep-alive',
+      Origin: 'https://academia-pro.vercel.app',
+      Referer: 'https://academia-pro.vercel.app',
+      Host: 'academia-pro.vercel.app',
+
+      'content-type': 'application/json',
+    },}).then((d)=>d.json()).then((res) => console.log(Decrypt(res.cookie)));
+  }, [])
+
+  useEffect(()=>{
+    if(cookie){
+      fetch("https://proscrape.vercel.app/api/marks", {
+        method: "GET",
+        headers: {
+          "X-CSRF-Token": cookie ,
+          "Set-Cookie": cookie ,
+          Cookie: cookie ,
+          Connection: "keep-alive",
+          "Accept-Encoding": "gzip, deflate, br, zstd",
+          "Cache-Control": "s-maxage=86400, stale-while-revalidate=7200",
+        },
+      }).then((d)=> d.json()).then((d)=>{
+
+      } )  
+    }
+  
+  },[cookie]);
   return (
     <div id="grade" className="sub-card">
       <div className="grd">
