@@ -1,13 +1,15 @@
-import { addCourse } from '@/markStore';
+import { addCourse, coursesStore } from '@/markStore';
 import { useStore } from '@nanostores/react';
-import CryptoJS from 'crypto-js';
 import { useEffect, useMemo, useState } from 'react';
 import GradeSelect from './subcomponents/GradeSelect/GradeSelect.jsx';
 
 export default function GradeCalculator() {
   const [courses, setCourse] = useState([]);
   const [avg, setAvg] = useState('O');
-
+  const $courses = useStore(coursesStore);
+  useEffect(()=>{
+    console.log($courses);
+  }, [$courses])
   function handleOnClick() {
     if (courses.length < 7) {
       setCourse([

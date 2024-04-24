@@ -1,4 +1,3 @@
-import { string } from 'astro/zod';
 import { map } from 'nanostores';
 type TestMark = {
   test: string;
@@ -20,15 +19,22 @@ type Course = {
 
 
 export const coursesStore = map<Record<string, Course[]>>({ });
+
 export function addCourse(course: Course) {
-  const currentData = coursesStore.get().marks;
-  const existingCourseIndex = currentData.findIndex(c => c.courseCode === course.courseCode);
+  const currentData = coursesStore.get();
+  const existingCourseIndex = currentData[course.courseCode]?.findIndex(c => c.courseCode === course.courseCode) ?? -1;
+
   if (existingCourseIndex === -1) {
-    coursesStore.set({ marks: [...currentData, course] });
+    if (!currentData[course.courseCode]) {
+      currentData[course.courseCode] = [];
+    }
+    currentData[course.courseCode].push(course);
+    coursesStore.set(currentData);
   } else {
     console.log('Course with this code already exists.');
   }
 }
+
 
 
 

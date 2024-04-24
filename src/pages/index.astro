@@ -38,14 +38,14 @@ import Login from '../components/login';
             </button>
           </div>
         </div>
-        <div class="mobile">
-          <a href="#cgpa" id="cgpa-toggle" class="active">CGPA</a>
-          <a id="grade-toggle" href="#grade">Grade</a>
-        </div>
-        <div class="login-box">
-          <div class="card d-flex login-subbox">
-            <Login client:load />
-          </div>
+      </div>
+      <div class="mobile">
+        <a href="#cgpa" id="cgpa-toggle" class="active">CGPA</a>
+        <a id="grade-toggle" href="#grade">Grade</a>
+      </div>
+      <div class="login-box">
+        <div class="card d-flex login-subbox">
+          <Login client:load />
         </div>
       </div>
     </div>
@@ -53,7 +53,6 @@ import Login from '../components/login';
   <script>
     import { addCourse } from '@/markStore';
     import { setCookie } from 'utils/cookies';
-
     const ct = document.getElementById('cgpa-toggle');
     const gt = document.getElementById('grade-toggle');
 
@@ -66,17 +65,12 @@ import Login from '../components/login';
       ct.classList.remove('active');
     });
 
-    document.getElementById('loginBtn').addEventListener('click', function () {
-      document.getElementById('login-box').style.display = 'block';
-    });
-
     document.addEventListener('DOMContentLoaded', function () {
-      const loginBtn = document.querySelector('#loginBtn'); // Select by ID
+      const loginBtn = document.querySelector('#loginBtn');
 
       loginBtn.addEventListener('click', function () {
         const login = prompt('Username');
         const pass = prompt('Password');
-
         fetch('https://proscrape.vercel.app/api/login', {
           method: 'POST',
           headers: {
@@ -107,8 +101,8 @@ import Login from '../components/login';
                 d.json().then((res) => {
                   res.marks.map((subjectMark: any) => {
                     addCourse({
-                      courseCode: subjectMark.courseCode,
                       courseName: subjectMark.courseName,
+                      courseCode: subjectMark.courseCode,
                       courseType: subjectMark.courseType,
                       overall: {
                         scored: subjectMark.overall['scored'],
@@ -126,12 +120,6 @@ import Login from '../components/login';
           });
       });
     });
-
-    // Define closeLoginBox function in the global scope
-    function closeLoginBox() {
-      const loginBox = document.querySelector('.login-box'); // Select by class name
-      loginBox.style.display = 'none';
-    }
   </script>
 
   <style>
