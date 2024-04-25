@@ -9,7 +9,6 @@ export default function Login() {
   const [cookie, setCookieLocal] = useState(null);
 
   const handleSubmit = (e: any) => {
-    console.log('hello');
     e.preventDefault();
     setLoggedIn(true);
   };

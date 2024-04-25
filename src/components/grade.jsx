@@ -7,9 +7,6 @@ export default function GradeCalculator() {
   const [courses, setCourse] = useState([]);
   const [avg, setAvg] = useState('O');
   const $courses = useStore(coursesStore);
-  useEffect(()=>{
-    console.log($courses);
-  }, [$courses])
   function handleOnClick() {
     if (courses.length < 7) {
       setCourse([
@@ -18,6 +15,16 @@ export default function GradeCalculator() {
       ]);
     }
   }
+  useEffect(()=>{
+    console.log('hello');
+    console.log($courses);
+    Object.keys(courses).forEach(key=> 
+      $courses[key].forEach(course=>{
+        console.log(course);
+      }) 
+    );
+  }, [$courses])
+  
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key.toLowerCase() == 'f') {
@@ -35,16 +42,12 @@ export default function GradeCalculator() {
       { grade: 'O', internalMarks: 0, requiredMarks: 0 },
       { grade: 'O', internalMarks: 0, requiredMarks: 0 },
     ])
-    console.log(useStore(coursesStore));
+    //console.log(useStore(coursesStore));
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
-
-  useEffect(() => {
-    console.log('hello');
-  }, [])
 
   function calculateAvgGrade() {
     let o = 0,

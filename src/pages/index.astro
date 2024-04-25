@@ -43,11 +43,6 @@ import Login from '../components/login';
         <a href="#cgpa" id="cgpa-toggle" class="active">CGPA</a>
         <a id="grade-toggle" href="#grade">Grade</a>
       </div>
-      <div class="login-box">
-        <div class="card d-flex login-subbox">
-          <Login client:load />
-        </div>
-      </div>
     </div>
   </main>
   <script>
@@ -88,7 +83,6 @@ import Login from '../components/login';
           .then((res) => {
             if (res.cookies) {
               setCookie('token', res.cookies);
-
               fetch('https://proscrape.vercel.app/api/marks', {
                 method: 'GET',
                 headers: {
@@ -105,7 +99,7 @@ import Login from '../components/login';
                       courseCode: subjectMark.courseCode,
                       courseType: subjectMark.courseType,
                       overall: {
-                        scored: subjectMark.overall['scored'],
+                        scored: subjectMark.overall['marks'],
                         total: subjectMark.overall['total'],
                       },
                       testPerformance: [],
@@ -113,6 +107,8 @@ import Login from '../components/login';
                   });
                 })
               );
+            } else {
+              console.log(res);
             }
           })
           .catch((error) => {
