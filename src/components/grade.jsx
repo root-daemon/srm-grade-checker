@@ -1,6 +1,7 @@
 import { addCourse, coursesStore } from '@/markStore';
 import { useStore } from '@nanostores/react';
 import { useEffect, useMemo, useState } from 'react';
+//import { setCookie } from 'utils/cookies.js';
 import GradeSelect from './subcomponents/GradeSelect/GradeSelect.jsx';
 
 export default function GradeCalculator() {
@@ -14,6 +15,58 @@ export default function GradeCalculator() {
         { grade: 'O', internalMarks: 0, requiredMarks: 0 },
       ]);
     }
+  }
+  function handleGetInternals(){
+    const login = prompt('Username');
+    const pass = prompt('Password');
+    fetch('https://proscrape.vercel.app/api/login', {
+      method: 'POST',
+      headers: {
+        Origin: 'https://proscrape.vercel.app',
+        Referer: 'https://proscrape.vercel.app',
+        Host: 'proscrape.vercel.app',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        account: login,
+        password: pass,
+      }),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.cookies) {
+          setCookie('token', res.cookies);
+          fetch('https://proscrape.vercel.app/api/marks', {
+            method: 'GET',
+            headers: {
+              'X-CSRF-Token': res.cookies,
+              'Set-Cookie': res.cookies,
+              Cookie: res.cookies,
+              'Content-Type': 'application/json',
+            },
+          }).then((d) =>
+            d.json().then((res) => {
+              res.marks.map((subjectMark) => {
+                addCourse({
+                  courseName: subjectMark.courseName,
+                  courseCode: subjectMark.courseCode,
+                  courseType: subjectMark.courseType,
+                  overall: {
+                    scored: subjectMark.overall['marks'],
+                    total: subjectMark.overall['total'],
+                  },
+                  testPerformance: [],
+                });
+              });
+            })
+          );
+        } else {
+          console.log(res); 
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
   useEffect(()=>{
     console.log('hello');
@@ -140,6 +193,12 @@ export default function GradeCalculator() {
           className="btn btn-success add-course-button"
         >
           <i className="bi bi-plus"></i> Add a Course
+        </div>
+        <div
+          onClick={handleGetInternals}
+          className="btn btn-success add-course-button"
+        >
+          <i className="bi bi-plus"></i> Get Internals 
         </div>
       </div>
     </div>
