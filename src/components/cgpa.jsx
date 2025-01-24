@@ -47,7 +47,7 @@ export default function CGPA() {
     setCgpa(isNaN(gpa) ? 0 : parseFloat(gpa.toPrecision(3)));
   }
   function handleOnClick() {
-    if (courses.length < 7) {
+    if (courses.length < 10) {
       setCourse([...courses, { cred: 0, grade: 'O' }]);
     }
   }
