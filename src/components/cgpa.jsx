@@ -65,7 +65,7 @@ export default function CGPA() {
     <div id="cgpa" className="sub-card">
       <div className="cgpa" onClick={handleEasterOnClick}>
         <h1>{clicks > 7 ? 6.9 : cgpa}</h1>
-        <p className="text">CGPA</p>
+        <p className="text">SGPA</p>
       </div>
       {courses[0] && (
         <table>
